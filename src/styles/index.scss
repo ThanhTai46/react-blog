@@ -5,6 +5,7 @@
 }
 * {
   margin: 0;
+  font-family: "Poppins", sans-serif;
 }
 
 html,
@@ -41,4 +42,13 @@ h4,
 h5,
 h6 {
   overflow-wrap: break-word;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
 }

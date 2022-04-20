@@ -1,9 +1,15 @@
-import Switch from "./components/switch/Switch";
+import { Route, Routes } from "react-router-dom";
+import { AuthProvider } from "./contexts/auth-context";
+import SignUpPage from "./pages/SignUpPage";
 
 function App() {
   return (
     <div>
-      <Switch></Switch>
+      <AuthProvider>
+        <Routes>
+          <Route path="/sign-up" element={<SignUpPage></SignUpPage>}></Route>
+        </Routes>
+      </AuthProvider>
     </div>
   );
 }
