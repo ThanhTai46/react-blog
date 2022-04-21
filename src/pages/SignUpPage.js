@@ -6,7 +6,20 @@ import { Label } from "components/label";
 import { Input } from "components/input";
 import { IconEyeClose, IconEyeOpen } from "components/icon";
 import { Button } from "components/button";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
 
+const schema = yup.object({
+  fullName: yup.string().required("Please enter your fullname."),
+  email: yup.string().email().required("Please enter your email."),
+  password: yup
+    .string()
+    .required("Please enter your password.")
+    .min(8, "Your password must be least 8 characters or greaters")
+    .matches(/[a-zA-Z]/, "Password can only contain Latin letters."),
+});
 const SignUpPageStyles = styled.div`
   min-height: 100vh;
   padding: 40px;
@@ -30,11 +43,15 @@ const SignUpPageStyles = styled.div`
 `;
 const SignUpPage = () => {
   const {
+    register,
     control,
     handleSubmit,
     formState: { errors, isValid, isSubmitting, reset },
     watch,
-  } = useForm({});
+  } = useForm({
+    mode: "onChange",
+    resolver: yupResolver(schema),
+  });
   const handleSignUp = (value) => {
     if (!isValid) return;
     return new Promise((resolve) => {
@@ -45,7 +62,14 @@ const SignUpPage = () => {
     });
   };
   const [showPassword, setShowPassword] = useState(false);
-
+  useEffect(() => {
+    const arrErrors = Object.values(errors);
+    if (arrErrors.length > 0) {
+      toast.error(arrErrors[0]?.message, {
+        pauseOnHover: false,
+      });
+    }
+  }, [errors]);
   return (
     <SignUpPageStyles className="bg-slate-100">
       <div className="container ">
