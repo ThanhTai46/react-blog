@@ -10,15 +10,19 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth, db } from "firebase-app/firebase-config";
+import { useNavigate } from "react-router-dom";
+import { addDoc, collection } from "firebase/firestore";
 
 const schema = yup.object({
-  fullName: yup.string().required("Please enter your fullname."),
-  email: yup.string().email().required("Please enter your email."),
+  fullName: yup.string().required("Please enter your fullname.😢😢"),
+  email: yup.string().email().required("Please enter your email. 😢😢"),
   password: yup
     .string()
-    .required("Please enter your password.")
-    .min(8, "Your password must be least 8 characters or greaters")
-    .matches(/[a-zA-Z]/, "Password can only contain Latin letters."),
+    .required("Please enter your password. 😢😢")
+    .min(8, "Your password must be least 8 characters or greaters. 😢😢")
+    .matches(/[a-zA-Z]/, "Password can only contain Latin letters. 😢😢"),
 });
 const SignUpPageStyles = styled.div`
   min-height: 100vh;
@@ -52,16 +56,28 @@ const SignUpPage = () => {
     mode: "onChange",
     resolver: yupResolver(schema),
   });
-  const handleSignUp = (value) => {
+  const navigate = useNavigate();
+  const handleSignUp = async (value) => {
     if (!isValid) return;
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve();
-        console.log(value);
-      }, 3000);
+    const user = await createUserWithEmailAndPassword(
+      auth,
+      value.email,
+      value.password
+    );
+    await updateProfile(auth.currentUser, {
+      displayName: value.fullName,
+    });
+    toast.success("Register successfully 😄😄️🎉️🎉");
+    navigate("/");
+    const colRef = collection(db, "users");
+    await addDoc(colRef, {
+      fullname: value.fullName,
+      email: value.email,
+      password: value.password,
     });
   };
   const [showPassword, setShowPassword] = useState(false);
+
   useEffect(() => {
     const arrErrors = Object.values(errors);
     if (arrErrors.length > 0) {
