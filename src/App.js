@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import { AuthProvider } from "./contexts/auth-context";
-import SignUpPage from "./pages/SignUpPage";
+import { AuthProvider } from "contexts/auth-context";
+import SignUpPage from "pages/SignUpPage";
 
 function App() {
   return (

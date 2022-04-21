@@ -1,5 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { useForm } from "react-hook-form";
+import { Field } from "components/field";
+import { Label } from "components/label";
+import { Input } from "components/input";
+import { IconEyeClose, IconEyeOpen } from "components/icon";
+import { Button } from "components/button";
 
 const SignUpPageStyles = styled.div`
   min-height: 100vh;
@@ -16,45 +22,30 @@ const SignUpPageStyles = styled.div`
     text-align: center;
     margin-bottom: 100px;
   }
-  .field {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-  }
-  .label {
-    cursor: pointer;
-    font-weight: 600;
-    color: ${(props) => props.theme.text};
-    font-size: 16px;
-  }
-  .input {
-    width: 100%;
 
-    border-radius: 8px;
-
-    padding: 20px;
-    background-color: ${(props) => props.theme.grayLight};
-    font-size: 14px;
-    transition: all 0.2s linear;
-    border: 1px solid transparent;
-  }
-  .input:focus {
-    background-color: #fff;
-    border: 1px solid ${(props) => props.theme.blue};
-  }
-  .input::-webkit-input-placeholder {
-    color: #84878b;
-  }
-  .input::-moz-input-placeholder {
-    color: #84878b;
-  }
   .form {
     max-width: 600px;
     margin: 0 auto;
   }
 `;
 const SignUpPage = () => {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors, isValid, isSubmitting, reset },
+    watch,
+  } = useForm({});
+  const handleSignUp = (value) => {
+    if (!isValid) return;
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve();
+        console.log(value);
+      }, 3000);
+    });
+  };
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
     <SignUpPageStyles className="bg-slate-100">
       <div className="container ">
@@ -64,19 +55,72 @@ const SignUpPage = () => {
           className="logo"
         />
         <h1 className="heading">Monkey Blogging</h1>
-        <form className="form">
-          <div className="field">
-            <label htmlFor="fullName" className="label">
+        <form
+          className="form"
+          onSubmit={handleSubmit(handleSignUp)}
+          autoComplete="off"
+        >
+          <Field>
+            <Label htmlFor="fullName" className="label">
               Fullname
-            </label>
-            <input
+            </Label>
+            <Input
               type="text"
-              className="input"
               name="fullName"
-              id="fullName"
               placeholder="Please Enter your fullname"
+              control={control}
             />
-          </div>
+          </Field>
+          {/* Email Field */}
+          <Field>
+            <Label htmlFor="email" className="label">
+              Email address
+            </Label>
+            <Input
+              type="email"
+              name="email"
+              placeholder="Please Enter your email address"
+              control={control}
+            />
+          </Field>
+          {/* End Email Field */}
+          {/* Password Field */}
+          <Field>
+            <Label htmlFor="password" className="label">
+              Password
+            </Label>
+            <Input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              placeholder="Please Enter your password"
+              control={control}
+            >
+              {showPassword ? (
+                <IconEyeOpen
+                  className="input-icon"
+                  onClick={() =>
+                    setShowPassword((showPassword) => !showPassword)
+                  }
+                ></IconEyeOpen>
+              ) : (
+                <IconEyeClose
+                  className="input-icon"
+                  onClick={() =>
+                    setShowPassword((showPassword) => !showPassword)
+                  }
+                ></IconEyeClose>
+              )}
+            </Input>
+          </Field>
+          <Button
+            type="submit"
+            className="flex items-center justify-center"
+            isLoading={isSubmitting}
+            disabled={isSubmitting}
+          >
+            Sign up
+          </Button>
+          {/* End Password Field */}
         </form>
       </div>
     </SignUpPageStyles>
