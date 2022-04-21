@@ -29,23 +29,22 @@ const SignUpPageStyles = styled.div`
   }
 `;
 const SignUpPage = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const {
     control,
-    handleSubmit,
-    formState: { errors, isValid, isSubmitting, reset },
     watch,
-  } = useForm({});
-  const handleSignUp = (value) => {
+    formState: { isSubmitting, isValid, errors },
+    handleSubmit,
+  } = useForm();
+  const handleSignout = (value) => {
     if (!isValid) return;
-    return new Promise((resolve) => {
+    return new Promise((resolve) =>
       setTimeout(() => {
         resolve();
         console.log(value);
-      }, 3000);
-    });
+      }, 3000)
+    );
   };
-  const [showPassword, setShowPassword] = useState(false);
-
   return (
     <SignUpPageStyles className="bg-slate-100">
       <div className="container ">
@@ -57,7 +56,7 @@ const SignUpPage = () => {
         <h1 className="heading">Monkey Blogging</h1>
         <form
           className="form"
-          onSubmit={handleSubmit(handleSignUp)}
+          onSubmit={handleSubmit(handleSignout)}
           autoComplete="off"
         >
           <Field>

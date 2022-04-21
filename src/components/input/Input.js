@@ -1,6 +1,7 @@
 import React from "react";
-import styled from "styled-components";
 import { useController } from "react-hook-form";
+import styled from "styled-components";
+
 const InputStyles = styled.div`
   position: relative;
   width: 100%;
@@ -33,13 +34,13 @@ const InputStyles = styled.div`
 `;
 const Input = ({ type = "", name, children, control, ...props }) => {
   const { field } = useController({
-    control,
     name,
+    control,
     defaultValue: "",
   });
   return (
-    <InputStyles hasIcon={children ? true : false}>
-      <input id={name} type={type} {...field} {...props} className="input" />
+    <InputStyles>
+      <input id={name} className="input" {...field} type={type} {...props} />
       {children}
     </InputStyles>
   );
