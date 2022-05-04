@@ -1,7 +1,7 @@
 import { Loading } from "components/loading";
 import React from "react";
 import styled from "styled-components";
-
+import PropTypes from "prop-types";
 const ButtonStyles = styled.button`
   padding: 16px;
   max-width: 350px;
@@ -17,6 +17,12 @@ const ButtonStyles = styled.button`
     cursor: no-drop;
   }
 `;
+/**
+ *
+ * @requires
+ * @param {string} type of Button 'button' | 'submit'
+ * @returns
+ */
 const Button = ({
   type = "button",
   onClick = () => {},
@@ -38,4 +44,8 @@ const Button = ({
   );
 };
 
+Button.propTypes = {
+  type: PropTypes.oneOf(["button", "submit"]).isRequired,
+  onClick: PropTypes.func,
+};
 export default Button;
