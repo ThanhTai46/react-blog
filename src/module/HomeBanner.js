@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 import "./index.scss";
 import styled from "styled-components";
 import { Button } from "components/button";
@@ -73,6 +74,11 @@ const HomeBanner = () => {
       </HomeBannerStyles>
     </div>
   );
+=======
+
+const HomeBanner = () => {
+  return <div></div>;
+>>>>>>> 99cc798059ca13615a45e64b660b28998cffc7d2
 };
 
 export default HomeBanner;
