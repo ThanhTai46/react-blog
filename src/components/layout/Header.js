@@ -73,11 +73,7 @@ const HeaderStyles = styled.header`
   }
 `;
 function getLastName(name) {
-<<<<<<< HEAD
   if (!name) {
-=======
-  if (name === undefined) {
->>>>>>> 99cc798059ca13615a45e64b660b28998cffc7d2
     return;
   }
   const length = name.split(" ").length;

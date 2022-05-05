@@ -30,7 +30,7 @@ const SignInPage = () => {
     if (userInfo?.email) navigate("/");
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [userInfo]);
 
   const {
     register,

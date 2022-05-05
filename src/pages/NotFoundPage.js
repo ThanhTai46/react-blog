@@ -10,10 +10,6 @@ const NotFoundPageStyles = styled.div`
     width: 300px;
     font-weight: 500;
     font-size: 20px;
-<<<<<<< HEAD
-=======
-
->>>>>>> 99cc798059ca13615a45e64b660b28998cffc7d2
     text-align: center;
     h1 {
       margin-top: 1.6rem;
