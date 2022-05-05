@@ -5,4 +5,7 @@ export const theme = {
   blue: "#316BFF",
 
   secondary: "#A4D96C",
+  tertiary: "#3A1097",
+  accent: "#00D1ED",
+  currentColor: "F8F9FA",
 };

@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 const AuthenticationPageStyles = styled.div`
+  font-family: "Poppins", sans-serif;
+
   min-height: 100vh;
   padding: 40px;
   .logo {

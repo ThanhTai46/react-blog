@@ -18,6 +18,8 @@ const menuLinks = [
   },
 ];
 const HeaderStyles = styled.header`
+  font-family: "Poppins", sans-serif;
+
   padding: 40px 0;
   .header-main {
     display: flex;

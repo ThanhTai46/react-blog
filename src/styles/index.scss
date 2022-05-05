@@ -1,12 +1,13 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
+
 * {
   padding: 0;
   margin: 0;
-  font-family: "Poppins", sans-serif;
 }
 
 html,
@@ -44,6 +45,10 @@ h5,
 h6 {
   overflow-wrap: break-word;
 }
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -55,4 +60,38 @@ h6 {
 }
 .text-primary {
   color: #a4d96c;
+}
+.home-block {
+  padding-bottom: 40px;
+  @media screen and (min-width: 1024px) {
+    padding-bottom: 60px;
+  }
+}
+.grid-layout {
+  display: grid;
+  grid-auto-columns: 235px;
+  gap: 20px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  @media screen and (min-width: 1024px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 48px;
+  }
+  @media screen and (max-width: 1023.98px) {
+    grid-auto-flow: column;
+    scroll-snap-type: x mandatory;
+    overflow-x: auto;
+  }
+  & > * {
+    scroll-snap-align: start;
+  }
+  &--primary {
+    grid-auto-columns: 220px;
+    @media screen and (min-width: 1024px) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
 }
