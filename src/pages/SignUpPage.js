@@ -123,6 +123,7 @@ const SignUpPage = () => {
           Already have an account? <Link to="/sign-in">Sign in</Link>
         </div>
         <Button
+          kind="primary"
           type="submit"
           className="flex items-center justify-center"
           isLoading={isSubmitting}

@@ -111,6 +111,7 @@ const SignInPage = () => {
             <Link to="/sign-up">Register an account</Link>
           </div>
           <Button
+            kind="primary"
             type="submit"
             className="flex items-center justify-center"
             isLoading={isSubmitting}

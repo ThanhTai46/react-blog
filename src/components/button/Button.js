@@ -1,13 +1,27 @@
 import { Loading } from "components/loading";
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import PropTypes from "prop-types";
 const ButtonStyles = styled.button`
   padding: 16px;
   max-width: 350px;
   width: 100%;
   border-radius: 8px;
-  background-image: linear-gradient(to right bottom, #00a7b4, #a4d96c);
+  background-color: white;
+  ${(props) =>
+    props.kind === "secondary" &&
+    css`
+      color: ${(props) => props.theme.primary};
+      background-color: white;
+    `};
+
+  ${(props) =>
+    props.kind === "primary" &&
+    css`
+      color: white;
+      background-image: linear-gradient(to right bottom, #00a7b4, #a4d96c);
+    `};
+
   font-weight: 600;
   font-size: 18px;
   color: #fff;
