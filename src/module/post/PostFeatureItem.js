@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PostCategory from "./PostCategory";
 const PostFeatureItemStyles = styled.div`
   width: 100%;
   position: relative;
@@ -38,19 +39,7 @@ const PostFeatureItemStyles = styled.div`
       align-items: center;
       margin-bottom: 16px;
     }
-    &-category {
-      display: inline-block;
-      padding: 8px 12px;
-      border-radius: 8px;
-      color: #6b6b6b;
-      font-size: 14px;
-      font-weight: 500;
-      white-space: nowrap;
-      background-color: #f3f3f3;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 100px;
-    }
+
     &-info {
       display: flex;
       align-items: center;
@@ -90,7 +79,7 @@ const PostFeatureItem = () => {
       <div className="post-overlay"></div>
       <div className="post-content">
         <div className="post-top">
-          <span className="post-category">Kiến thức</span>
+          <PostCategory type="primary">Kiến thức</PostCategory>
           <div className="post-info">
             <span className="post-item">Mar 23</span>
             <span className="post-dot"></span>

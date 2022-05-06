@@ -22,7 +22,7 @@ const HomeNewest = () => {
   return (
     <HomeNewestStyles className="home-block">
       <div className="container">
-        <Heading>Newest update</Heading>
+        <Heading>Bài viết mới nhất</Heading>
         <div className="layout">
           <PostNewestLarge></PostNewestLarge>
           <div className="sidebar">

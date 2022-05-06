@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { Button } from "components/button";
 import { Link } from "react-router-dom";
 const HomeBannerStyles = styled.div`
-  border-radius: 6px;
   min-height: 520px;
   padding: 36px;
   background-image: linear-gradient(
@@ -47,8 +46,8 @@ const HomeBannerStyles = styled.div`
 `;
 const HomeBanner = () => {
   return (
-    <div className="container">
-      <HomeBannerStyles>
+    <HomeBannerStyles>
+      <div className="container">
         <div className="banner">
           <div className="banner-content">
             <h1 className="banner-heading">Monkey Blogging</h1>
@@ -70,8 +69,8 @@ const HomeBanner = () => {
             <img src="/images/banner-img.png" alt="banner" />
           </div>
         </div>
-      </HomeBannerStyles>
-    </div>
+      </div>
+    </HomeBannerStyles>
   );
 };
 

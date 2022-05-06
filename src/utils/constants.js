@@ -8,4 +8,6 @@ export const theme = {
   tertiary: "#3A1097",
   accent: "#00D1ED",
   currentColor: "F8F9FA",
+  colorF3: "#F3EDFF",
+  color6B: "#6B6B6B",
 };

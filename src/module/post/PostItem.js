@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PostCategory from "./PostCategory";
 const PostItemStyles = styled.div`
   font-family: "Montserrat", sans-serif;
   display: flex;
@@ -19,14 +20,7 @@ const PostItemStyles = styled.div`
       }
     }
     &-category {
-      display: inline-block;
-      padding: 8px 12px;
-      border-radius: 8px;
-      color: #6b6b6b;
-      font-size: 14px;
-      font-weight: 500;
-      background-color: #f3edff;
-      margin-bottom: 16px;
+      margin-bottom: 10px;
     }
     &-info {
       display: flex;
@@ -63,7 +57,9 @@ const PostItem = () => {
           alt=""
         />
       </div>
-      <div className="post-category">Kiến thức</div>
+      <PostCategory className="post-category" type="primary">
+        Kiến thức
+      </PostCategory>
       <h3 className="post-title">
         Hướng dẫn setup phòng cực chill dành cho người mới toàn tập
       </h3>

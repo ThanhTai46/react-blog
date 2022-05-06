@@ -6,7 +6,7 @@ const HomeFeature = () => {
   return (
     <HomeFeatureStyles className="home-block">
       <div className="container">
-        <Heading>Feature</Heading>
+        <Heading>Bài viết nổi bật</Heading>
         <div className="grid-layout">
           <PostFeatureItem></PostFeatureItem>
           <PostFeatureItem></PostFeatureItem>
