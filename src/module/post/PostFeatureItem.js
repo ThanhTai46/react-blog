@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import PostCategory from "./PostCategory";
+import PostMeta from "./PostMeta";
+import PostTitle from "./PostTitle";
 const PostFeatureItemStyles = styled.div`
   width: 100%;
   position: relative;
@@ -39,30 +41,6 @@ const PostFeatureItemStyles = styled.div`
       align-items: center;
       margin-bottom: 16px;
     }
-
-    &-info {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 14px;
-      font-weight: 500;
-      color: white;
-      margin-left: auto;
-    }
-    &-dot {
-      display: inline-block;
-      width: 4px;
-      height: 4px;
-      background-color: currentColor;
-      border-radius: 100%;
-    }
-    &-title {
-      font-weight: 600;
-      line-height: 1.5;
-      display: block;
-      font-size: 18px;
-      color: white;
-    }
   }
   @media screen and (min-width: 1024px) {
     height: 272px;
@@ -80,15 +58,11 @@ const PostFeatureItem = () => {
       <div className="post-content">
         <div className="post-top">
           <PostCategory type="primary">Kiến thức</PostCategory>
-          <div className="post-info">
-            <span className="post-item">Mar 23</span>
-            <span className="post-dot"></span>
-            <span className="post-author">Andiez Le</span>
-          </div>
+          <PostMeta type="secondary"></PostMeta>
         </div>
-        <h3 className="post-title">
+        <PostTitle size="normal">
           Hướng dẫn setup phòng cực chill dành cho người mới toàn tập
-        </h3>
+        </PostTitle>
       </div>
     </PostFeatureItemStyles>
   );

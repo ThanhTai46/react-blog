@@ -10,4 +10,5 @@ export const theme = {
   currentColor: "F8F9FA",
   colorF3: "#F3EDFF",
   color6B: "#6B6B6B",
+  color23: "#232323",
 };

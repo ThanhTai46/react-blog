@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 const PostCategoryStyles = styled.div`
   display: inline-block;
@@ -20,9 +21,11 @@ const PostCategoryStyles = styled.div`
 `;
 const PostCategory = ({ children, type = "primary", className = "" }) => {
   return (
-    <PostCategoryStyles type={type} className={className}>
-      {children}
-    </PostCategoryStyles>
+    <Link to="/category">
+      <PostCategoryStyles type={type} className={className}>
+        {children}
+      </PostCategoryStyles>
+    </Link>
   );
 };
 

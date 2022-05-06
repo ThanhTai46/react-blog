@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import PostCategory from "./PostCategory";
+import PostMeta from "./PostMeta";
+import PostTitle from "./PostTitle";
 const PostNewestItemStyles = styled.div`
   font-family: "Montserrat", sans-serif;
   display: flex;
@@ -30,29 +32,6 @@ const PostNewestItemStyles = styled.div`
     &-category {
       margin-bottom: 10px;
     }
-    &-info {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 14px;
-      font-weight: 500;
-      margin-left: auto;
-      color: #6b6b6b;
-    }
-    &-dot {
-      display: inline-block;
-      width: 4px;
-      height: 4px;
-      background-color: currentColor;
-      border-radius: 100%;
-    }
-    &-title {
-      font-weight: 600;
-      line-height: 1.5;
-      display: block;
-      font-size: 16px;
-      margin-bottom: 8px;
-    }
   }
 `;
 const PostNewestItem = () => {
@@ -68,14 +47,11 @@ const PostNewestItem = () => {
         <PostCategory className="post-category" type="secondary">
           Kiến thức
         </PostCategory>
-        <h3 className="post-title">
+        <PostTitle size="normal">
           Hướng dẫn setup phòng cực chill dành cho người mới toàn tập
-        </h3>
-        <div className="post-info">
-          <span className="post-time">Mar 23</span>
-          <span className="post-dot"></span>
-          <span className="post-author">Andiez Le</span>
-        </div>
+        </PostTitle>
+
+        <PostMeta type="primary"></PostMeta>
       </div>
     </PostNewestItemStyles>
   );
