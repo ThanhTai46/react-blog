@@ -6,7 +6,6 @@ const PostMetaStyles = styled.div`
   gap: 12px;
   font-size: 14px;
   font-weight: 500;
-  margin-left: auto;
   ${(props) =>
     props.type === "primary" &&
     css`
@@ -23,6 +22,10 @@ const PostMetaStyles = styled.div`
     height: 4px;
     background-color: currentColor;
     border-radius: 100%;
+  }
+  @media screen and (max-width: 1023.98px) {
+    font-size: 10px;
+    gap: 6px;
   }
 `;
 const PostMeta = ({

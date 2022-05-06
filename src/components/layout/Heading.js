@@ -10,13 +10,18 @@ const HeadingStyles = styled.h2`
   position: relative;
   &:before {
     content: "";
-    width: 50px;
+    width: 80px;
     height: 4px;
     background-color: ${(props) => props.theme.accent};
     position: absolute;
     top: 0;
     left: 0;
     transform: translate(0, -150%);
+    border-radius: 1rem;
+  }
+  @media screen and (max-width: 1023.98px) {
+    font-size: 22px;
+    margin-bottom: 20px;
   }
 `;
 const Heading = ({ className = "", children }) => {

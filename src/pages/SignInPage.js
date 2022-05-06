@@ -1,18 +1,18 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Field } from "components/field";
-import { Label } from "components/label";
 import { Button } from "components/button";
-import { IconEyeClose, IconEyeOpen } from "components/icon";
+import { Field } from "components/field";
 import { Input } from "components/input";
-import { useEffect, useState } from "react";
+import InputPasswordToggle from "components/input/InputPasswordToggle";
+import { Label } from "components/label";
+import { useAuth } from "contexts/auth-context";
+import { auth } from "firebase-app/firebase-config";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import * as yup from "yup";
 import AuthenticationPage from "./AuthenticationPage";
-import { toast } from "react-toastify";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "firebase-app/firebase-config";
-import { useAuth } from "contexts/auth-context";
 
 const schema = yup.object({
   email: yup.string().email().required("Please enter your email. 😢😢"),
@@ -42,7 +42,6 @@ const SignInPage = () => {
     mode: "onChange",
     resolver: yupResolver(schema),
   });
-  const [showPassword, setShowPassword] = useState(false);
   const handleSignIn = async (values) => {
     if (!isValid) return;
     await signInWithEmailAndPassword(auth, values.email, values.password);
@@ -82,28 +81,7 @@ const SignInPage = () => {
             <Label htmlFor="password" className="label">
               Password
             </Label>
-            <Input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              placeholder="Please Enter your password"
-              control={control}
-            >
-              {showPassword ? (
-                <IconEyeOpen
-                  className="input-icon"
-                  onClick={() =>
-                    setShowPassword((showPassword) => !showPassword)
-                  }
-                ></IconEyeOpen>
-              ) : (
-                <IconEyeClose
-                  className="input-icon"
-                  onClick={() =>
-                    setShowPassword((showPassword) => !showPassword)
-                  }
-                ></IconEyeClose>
-              )}
-            </Input>
+            <InputPasswordToggle control={control}></InputPasswordToggle>
           </Field>
           {/* End Password Field */}
           <div className="have-account">

@@ -1,13 +1,13 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "components/button";
 import { Field } from "components/field";
-import { IconEyeClose, IconEyeOpen } from "components/icon";
 import { Input } from "components/input";
+import InputPasswordToggle from "components/input/InputPasswordToggle";
 import { Label } from "components/label";
 import { auth, db } from "firebase-app/firebase-config";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -55,8 +55,6 @@ const SignUpPage = () => {
       password: value.password,
     });
   };
-  const [showPassword, setShowPassword] = useState(false);
-
   useEffect(() => {
     const arrErrors = Object.values(errors);
     if (arrErrors.length > 0) {
@@ -100,24 +98,8 @@ const SignUpPage = () => {
           <Label htmlFor="password" className="label">
             Password
           </Label>
-          <Input
-            type={showPassword ? "text" : "password"}
-            name="password"
-            placeholder="Please Enter your password"
-            control={control}
-          >
-            {showPassword ? (
-              <IconEyeOpen
-                className="input-icon"
-                onClick={() => setShowPassword((showPassword) => !showPassword)}
-              ></IconEyeOpen>
-            ) : (
-              <IconEyeClose
-                className="input-icon"
-                onClick={() => setShowPassword((showPassword) => !showPassword)}
-              ></IconEyeClose>
-            )}
-          </Input>
+          {/* Toggle Passwor */}
+          <InputPasswordToggle control={control}></InputPasswordToggle>
         </Field>
         <div className="have-account">
           Already have an account? <Link to="/sign-in">Sign in</Link>

@@ -42,6 +42,28 @@ const HomeBannerStyles = styled.div`
         color: #23bb86;
       }
     }
+    @media screen and (max-width: 1023.98px) {
+      .banner {
+        flex-direction: column;
+        min-height: unset;
+        &-heading {
+          font-size: 30px;
+          margin-bottom: 10px;
+        }
+        &-desc {
+          font-size: 14px;
+          margin-bottom: 20px;
+        }
+        &-image {
+          margin-top: 25px;
+        }
+        &-btn {
+          font-size: 14px;
+          height: auto;
+          padding: 15px;
+        }
+      }
+    }
   }
 `;
 const HomeBanner = () => {
@@ -57,7 +79,7 @@ const HomeBanner = () => {
               itaque vitae, exercitationem a beatae eius quam facilis voluptas
               placeat odit dolores.
             </p>
-            <Link to="/sign-in">
+            <Link to="/sign-up">
               <div className="wrap_banner-btn">
                 <Button className="banner-btn" type="button">
                   Get Started

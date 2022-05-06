@@ -1,4 +1,5 @@
 import Heading from "components/layout/Heading";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import PostFeatureItem from "./post/PostFeatureItem";
 const HomeFeatureStyles = styled.div``;

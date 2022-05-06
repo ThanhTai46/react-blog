@@ -19,11 +19,11 @@ const menuLinks = [
 ];
 const HeaderStyles = styled.header`
   font-family: "Poppins", sans-serif;
-
-  padding: 40px 0;
+  padding: 20px 0;
   .header-main {
     display: flex;
     align-items: center;
+
     img {
       display: block;
       max-width: 50px;
@@ -70,7 +70,16 @@ const HeaderStyles = styled.header`
       font-size: 18px;
       font-weight: 500;
     }
-    .header-auth {
+    @media screen and (max-width: 1023.98px) {
+      .logo {
+        max-width: 30px;
+      }
+      .menu,
+      .search,
+      .header-button,
+      .header-auth {
+        display: none;
+      }
     }
   }
 `;
@@ -83,7 +92,6 @@ function getLastName(name) {
 }
 const Header = () => {
   const { userInfo } = useAuth();
-  console.log("userInfo: ", userInfo);
 
   return (
     <HeaderStyles>

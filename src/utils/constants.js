@@ -11,4 +11,5 @@ export const theme = {
   colorF3: "#F3EDFF",
   color6B: "#6B6B6B",
   color23: "#232323",
+  textTitle: "#8479E1",
 };
