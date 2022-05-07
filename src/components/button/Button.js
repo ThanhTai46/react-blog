@@ -21,6 +21,15 @@ const ButtonStyles = styled.button`
       color: white;
       background-image: linear-gradient(to right bottom, #00a7b4, #a4d96c);
     `};
+  ${(props) =>
+    props.kind === "info" &&
+    css`
+      color: white;
+      max-width: 200px;
+      font-size: 16px;
+      font-weight: 300;
+      background-color: ${(props) => props.theme.blue};
+    `};
 
   font-weight: 600;
   font-size: 18px;

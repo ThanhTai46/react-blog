@@ -1,9 +1,11 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyCJ4DDQ8HnBPThQ2dyMuDceARMWQ-nSNeY",
   authDomain: "monkey-blogg.firebaseapp.com",
+  databaseURL:
+    "https://monkey-blogg-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "monkey-blogg",
   storageBucket: "monkey-blogg.appspot.com",
   messagingSenderId: "145810617967",
@@ -13,3 +15,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
+export const provider = new GoogleAuthProvider();

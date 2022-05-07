@@ -83,15 +83,16 @@ const HeaderStyles = styled.header`
     }
   }
 `;
-function getLastName(name) {
-  if (!name) {
-    return;
-  }
-  const length = name.split(" ").length;
-  return name.split(" ")[length - 1];
-}
+// function getLastName(name) {
+//   if (!name) {
+//     return;
+//   }
+//   const length = name.split(" ").length;
+//   return name.split(" ")[length - 1];
+// }
 const Header = () => {
   const { userInfo } = useAuth();
+  console.log("userInfo: ", userInfo);
 
   return (
     <HeaderStyles>
@@ -147,17 +148,26 @@ const Header = () => {
             </span>
           </div>
           {!userInfo ? (
-            <Link to="/sign-up">
-              <Button type="button" className="header-button">
-                Sign Up
+            <Link to="/sign-in">
+              <Button
+                type="button"
+                kind="primary"
+                className="header-button text-base font-thin"
+              >
+                Sign In
               </Button>
             </Link>
           ) : (
-            <div className="header-auth">
-              <span>Welcome back, </span>
-              <strong className="text-primary">
-                {getLastName(userInfo?.displayName)}
-              </strong>
+            <div className="header-auth flex items-center justify-center gap-1">
+              <span>Hello, </span>
+              <strong className="text-primary">{userInfo?.displayName}</strong>
+              <span>
+                <img
+                  src={userInfo?.photoURL}
+                  alt=""
+                  className="ml-3 rounded-full"
+                />
+              </span>
             </div>
           )}
         </div>
