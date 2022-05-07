@@ -5,8 +5,9 @@ import { Input } from "components/input";
 import InputPasswordToggle from "components/input/InputPasswordToggle";
 import { Label } from "components/label";
 import { useAuth } from "contexts/auth-context";
-import { auth, provider } from "firebase-app/firebase-config";
+import { auth, fbProvider, GoogleProvider } from "firebase-app/firebase-config";
 import { BsGoogle } from "react-icons/bs";
+import { FaFacebookF } from "react-icons/fa";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -53,23 +54,27 @@ const SignInPage = () => {
     await signInWithEmailAndPassword(auth, values.email, values.password);
     navigate("/");
   };
-  // useEffect(() => {
-  //   const arrErrors = Object.values(errors);
-  //   if (arrErrors.length > 0) {
-  //     toast.error(arrErrors[0]?.message, {
-  //       pauseOnHover: false,
-  //     });
-  //   }
-  // }, [errors]);
+  useEffect(() => {
+    const arrErrors = Object.values(errors);
+    if (arrErrors.length > 0) {
+      toast.error(arrErrors[0]?.message, {
+        pauseOnHover: false,
+      });
+    }
+  }, [errors]);
 
   // sign in GG
-
   const SignInWithGoogle = async (e) => {
     e.preventDefault();
-    await signInWithPopup(auth, provider);
+    await signInWithPopup(auth, GoogleProvider);
     navigate("/");
   };
-
+  // Sign in with FB
+  const SignInWithFacebook = async (e) => {
+    e.preventDefault();
+    await signInWithPopup(auth, fbProvider);
+    navigate("/");
+  };
   return (
     <div>
       <AuthenticationPage className="bg-slate-100">
@@ -99,16 +104,26 @@ const SignInPage = () => {
             <InputPasswordToggle control={control}></InputPasswordToggle>
           </Field>
           {/* End Password Field */}
-          <div className="have-account">--- Or Login with Google --- </div>
+          <div className="have-account">--- Or Login with --- </div>
+          {/* Login FB */}
+          <div className="max-w-[300px] mx-auto my-5 p-4 bg-blue-600 rounded-full text-white flex justify-center items-center cursor-pointer text-base gap-3">
+            <FaFacebookF className="w-5 h-5 object-cover" />
+            <button onClick={(e) => SignInWithFacebook(e)}>
+              <span className="">
+                Sign in with <span className="font-semibold">Facebook</span>
+              </span>
+            </button>
+          </div>
+          {/* Login Google */}
           <div className="max-w-[300px] mx-auto my-5 p-4 bg-red-500 rounded-full text-white flex justify-center items-center cursor-pointer text-base gap-3">
             <BsGoogle className="w-5 h-5 object-cover" />
-
             <button onClick={(e) => SignInWithGoogle(e)}>
               <span className="">
                 Sign in with <span className="font-semibold">Google</span>
               </span>
             </button>
           </div>
+
           <div className="have-account">
             Don't have an account?{" "}
             <Link to="/sign-up">Register an account</Link>

@@ -74,11 +74,28 @@ const HeaderStyles = styled.header`
       .logo {
         max-width: 30px;
       }
-      .menu,
-      .search,
-      .header-button,
-      .header-auth {
+      .menu {
         display: none;
+      }
+      .search {
+        max-width: 180px;
+        width: 180px;
+        input {
+          width: 100%;
+          overflow: hidden;
+          ::placeholder {
+            color: transparent;
+          }
+        }
+      }
+      .header-button {
+        max-width: 100px;
+        width: 100px;
+        margin-left: auto;
+      }
+      .header-auth {
+        display: flex;
+        margin-left: auto;
       }
     }
   }
